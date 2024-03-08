@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
 }
 
 .comments {
@@ -8,10 +9,17 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    color: brown;
-    font-weight: bolder;
-    border: 3px solid black;
+    color: #0d0d0d;
+    border: 3px solid #17181f;
     border-radius: 10px;
+    background-color: #797d9a;
+}
+
+.cardzin {
+    margin-bottom: 20px;
+    border: 3px solid #17181f;
+    border-radius: 10px;
+
 }
 
 .comments *{
@@ -25,19 +33,26 @@ body {
 
 #form-comentario textarea, input {
     display: block;
-    color: rgb(17, 35, 41);
+    color: #0de5a8;
     border-radius: 5px;
     border: 1px solid black;
-    background-color: antiquewhite;
+    background-color: #383939;
 }
 
 #form-comentario .btn-submit{
     margin-top: 25px;
     padding: 10px;
     width: 100px;
+    color: #ffff00;
+    background-color: #383939;
 }
 
 #form-comentario form{
     margin: 10px auto 0px auto;
     padding: 10px auto 0px auto;
+}
+
+.data {
+    margin-right: 0px;
+    align-self: flex-end;
 }
