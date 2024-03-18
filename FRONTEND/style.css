@@ -10,16 +10,26 @@ body {
     margin: 50px auto;
     padding: 20px;
     color: #0d0d0d;
-    border: 3px solid #17181f;
     border-radius: 10px;
     background-color: #797d9a;
 }
 
 .cardzin {
     margin-bottom: 20px;
-    border: 3px solid #17181f;
     border-radius: 10px;
+    background-color: #383939;
+    width: 500px;
+    padding: 5px;
+    color: #d7e50d;
+}
 
+.cardzin i {
+    color: #0de5a8;
+}
+
+.cardzin small {
+    color: #ffffff;
+    opacity: 0.7;
 }
 
 .comments *{
