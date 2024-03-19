@@ -37,6 +37,22 @@ server.get('/comment', (req, res) => {
     })
 })
 
+server.post('/login', (req, res) => {
+    const { username, password} = req.body;
+    db.query('SELECT * FROM user WHERE username =? AND password =?', [username, password], (err, result) => {
+        if(err) {
+            res.status(500).json({sucess: false, error:"Internal Server Error"})
+            return;
+        }
+        if(result.length > 0) {
+            const {id, username, firstname, lastname} = result[0];
+            res.json({success: true, user: {id, username, firstname, lastname}})
+        } else {
+            res.json({success: false, error: 'Usuário ou senha inválidos'})
+        }
+    })
+})
+
 server.get('/user', (req, res) => {
     db.query('SELECT * FROM user', (err, result) => {
         if(err) {
