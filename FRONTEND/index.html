@@ -12,8 +12,25 @@
 
 <body>
 <!-- ADD NEW COMMENT -->
+<div class="container">
+    <div class="row">
+        <div class="rol">
+            <div class="card shadow text-center" id="login-form">
+                <h2>LOGIN</h2>
+                <div class="card-body">
+                <form id="form-login">
+                    <input type="text" name="username" id="username" placeholder="Login" required>
+                    <input type="password" name="password" id="password" placeholder="PASSWORD" required>
+                    <button class="btn btn-dark my-2" type="submit">Enviar</button>
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row gx-5">
-    <div class="comments col shadow" id="form-comentario">
+    <div class="comments col shadow disabled" id="form-comentario">
         <h3>Novo Comentário</h3>
         <form id="formComment">
             <label for="autor">Autor</label>
