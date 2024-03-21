@@ -53,6 +53,18 @@ server.post('/login', (req, res) => {
     })
 })
 
+server.post('/comment', (req, res) => {
+    const { author, comment_text, created_at, updated_at} = req.body;
+    db.query('INSERT INTO comment (author, comment_text, created_at, updated_at) VALUES (?, ?, ?, ?)', [author, comment_text, created_at, updated_at], (err, result) => {
+        if(err) {
+            console.error(err);
+            res.status(500).json({ success: false, error: "Internal Server Error" });
+            return;
+        }
+
+    });
+});
+
 server.get('/user', (req, res) => {
     db.query('SELECT * FROM user', (err, result) => {
         if(err) {

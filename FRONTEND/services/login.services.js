@@ -8,14 +8,15 @@ const LoginService = {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(user)})
+      body: JSON.stringify(user)
+    })
     
         .then((response) => response.json())
         .then(data => {
           if (data.success) {
-            resolve('Usuario autenticado com sucesso');
+            resolve(data.user);
           } else {
-            reject("Erro na requisição");
+            reject(data.error);
           }
         });
     }).catch((error) => {
