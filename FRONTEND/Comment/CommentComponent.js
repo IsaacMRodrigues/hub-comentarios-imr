@@ -34,7 +34,7 @@ const handleComment = (event) =>{
   event.preventDefault();
   const {author, comment_text} = getInputComment();
   const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');;
-  const updated_at = new Date().toISOString().slice(0, 19).replace('T', ' ');;
+  const updated_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
   // tem que arrumar a hora ainda
   const comentario = new Comment(null, author.value, comment_text.value, created_at, updated_at);
   
@@ -51,6 +51,7 @@ const loadComment = async () => {
     
   // Dados carregados da API
   CommentService.apiGetComment().then(result => {
+    console.log("CARREGAMENTO")
     const comments = result.map(
         (comment) => new Comment(comment.id, comment.author, comment.comment_text, comment.created_at, comment.updated_at)
     );
@@ -65,12 +66,11 @@ const displayComment = (comments) => {
   const divFeed = document.getElementById("comment-feed");
   divFeed.innerHTML = ``;
   comments.forEach((item) => {
-    console.log(item);
     const divDisplay = document.createElement("div");
     let data = new Date(item.getCreatedAt());
     divDisplay.className = "d-flex text-body-secondary pt-3";
     divDisplay.innerHTML = `
-    <div class="cardzin">
+    <div class="cardzin" id="scroll">
     <div class="d-flex">
         <p class="pb-0 mb-0 small lh-sm" style="word-break: break-all;">
             <strong>@${item.author.split(" ")[0]}</strong>
