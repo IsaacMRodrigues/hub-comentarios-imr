@@ -11,6 +11,15 @@
 </head>
 
 <body>
+
+    <div class="navlogin disabled" id="navlogin">
+
+    </div>
+
+    <div class="userdados disabled" id="userdados">
+
+    </div>
+
 <!-- ADD NEW COMMENT -->
 <div class="container">
     <div class="row">
@@ -20,7 +29,7 @@
                 <div class="card-body">
                 <form id="formLogin">
                     <input type="text" name="username" id="username" placeholder="Login" required>
-                    <input type="password" name="password" id="password" placeholder="PASSWORD" required>
+                    <input type="password" name="password" id="password" required>
                     <button class="btn btn-dark my-2" type="submit">Enviar</button>
                 </form>
             </div>
@@ -41,7 +50,7 @@
         </form>
     </div>
 <!-- DISPLAY COMMENTS -->
-    <div class="comments my-3 p-3 bg-body rounded shadow col scroll euai">
+    <div class="comments my-3 p-3 bg-body rounded shadow col scroll euai" id="feedcom">
         <h6 class="border-bottom pb-2 mb-0">Feed</h6>
         <div id="comment-feed">
             

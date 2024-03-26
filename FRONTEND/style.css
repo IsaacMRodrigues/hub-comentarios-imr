@@ -18,6 +18,15 @@ body {
     background-color: #797d9a;
 }
 
+.navlogin {
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #797d9a;
+    list-style: none;
+    max-width: 200px;
+}
+
 .scroll {
     overflow: auto;
 }
