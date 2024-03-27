@@ -12,16 +12,18 @@ const handleShowHide = () => {
     const newCommentTag = document.getElementById("form-comentario");
     const loginTag = document.getElementById("login-form");
     const navlogin = document.getElementById("navlogin");
+    const feedcom = document.getElementById("feedcom");
     
     if (newCommentTag.classList.contains("disabled")) {
         newCommentTag.classList.remove("disabled");
         loginTag.classList.add("disabled");
         navlogin.classList.remove("disabled");
+        feedcom.classList.remove("disabled");
     } else {
+        feedcom.classList.add("disabled");
         newCommentTag.classList.add("disabled");
         navlogin.classList.add("disabled");
         loginTag.classList.remove("disabled");
-
 }
 }
 
