@@ -57,6 +57,7 @@ const handleLogin = (event) =>{
    
               `;
           divNav.appendChild(divDisplay);
+
           document.getElementById("userDataLink").addEventListener('click', userData);
           document.getElementById("userLogout").addEventListener('click', logout);
 
@@ -66,7 +67,6 @@ const handleLogin = (event) =>{
 
           const divDisplay1 = document.createElement("div");
           divDisplay1.className = "d-flex text-body-secondary pt-3 disabled";
-          console.log(result)
           divDisplay1.innerHTML = `
             ${result.id} - ${result.username} - ${result.password} - ${result.firstname} - ${result.lastname}
    
