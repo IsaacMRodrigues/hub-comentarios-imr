@@ -1,43 +1,47 @@
 class Comment {
-
-  constructor(id, author, comment_text, created_at, updated_at) {
+  constructor(id, author, comment_text, created_at, updated_at, idUser) {
     this.id = id;
     this.author = author;
     this.comment_text = comment_text;
     this.created_at = created_at;
     this.updated_at = updated_at;
+    this.idUser = idUser;
+  }
 
-}
-  
-  getId(){
+  getId() {
     return this.id;
-  }  
+  }
 
-  getAuthor(){
+  getAuthor() {
     return this.author;
   }
-  
-  getCommentText(){
+
+  getIdUser() {
+    return this.idUser;
+  }
+
+  getCommentText() {
     return this.comment_text;
   }
-  
-  getCreatedAt(){
+
+  getCreatedAt() {
     return this.created_at;
   }
-  getUpdatedAt(){
+  getUpdatedAt() {
     return this.updated_at;
   }
 
-  setAuthor(author){
+  setAuthor(author) {
     this.author = author;
   }
 
-  setCommentText(comment_text){
+  setCommentText(comment_text) {
     this.comment_text = comment_text;
   }
 
-
+  setIdUser(idUser) {
+    this.idUser = idUser;
+  }
 }
 
-
-export { Comment }
+export { Comment };

@@ -37,6 +37,7 @@ server.get('/comment', (req, res) => {
     })
 })
 
+
 server.post('/login', (req, res) => {
     const { username, password} = req.body;
     db.query('SELECT * FROM user WHERE username =? AND password =?', [username, password], (err, result) => {
@@ -54,8 +55,8 @@ server.post('/login', (req, res) => {
 })
 
 server.post('/comment', (req, res) => {
-    const { author, comment_text, created_at, updated_at} = req.body;
-    db.query('INSERT INTO comment (author, comment_text, created_at, updated_at) VALUES (?, ?, ?, ?)', [author, comment_text, created_at, updated_at], (err, result) => {
+    const { author, comment_text, created_at, updated_at, idUser} = req.body;
+    db.query('INSERT INTO comment (author, comment_text, created_at, updated_at, idUser) VALUES (?, ?, ?, ?, ?)', [author, comment_text, created_at, updated_at, idUser], (err, result) => {
         if(err) {
             console.error(err);
             res.status(500).json({ success: false, error: "Internal Server Error" });

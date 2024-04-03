@@ -37,8 +37,9 @@ const handleLogin = (event) =>{
         user.setId(result.id)
         user.setFirstname(result.firstname);
         user.setLastname(result.lastname);
-        handleShowHide()
+        handleShowHide();
         document.getElementById("inputAuthor").value = `${result.firstname} ${result.lastname}`;
+        document.getElementById("idUserr").value = `${result.id}`;
 
 
         const divNav = document.getElementById("navlogin");
@@ -47,7 +48,7 @@ const handleLogin = (event) =>{
           const divDisplay = document.createElement("li");
           divDisplay.className = "nav-item dropdown";
           divDisplay.innerHTML = `
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a id="username" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           @${result.username}
         </a>
         <ul class="dropdown-menu">
@@ -78,19 +79,8 @@ const handleLogin = (event) =>{
 }
 
 const logout = () => {
-    const newCommentTag = document.getElementById("form-comentario");
-    const userdados = document.getElementById("userdados");
-    const feedcom = document.getElementById("feedcom");
-    const navlogin = document.getElementById("navlogin");
-    const loginTag = document.getElementById("login-form");
 
-        loginTag.classList.remove("disabled");
-        navlogin.classList.add("disabled");
-        userdados.classList.add("disabled");
-        feedcom.classList.add("disabled");
-        newCommentTag.classList.add("disabled");
-        userdados.classList.add("disabled");
-
+            location.reload();
     
 
 }
