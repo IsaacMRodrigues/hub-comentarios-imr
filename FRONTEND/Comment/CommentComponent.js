@@ -5,7 +5,6 @@ const getInputComment = () => {
   return {
     author: document.getElementById("inputAuthor"),
     comment_text: document.getElementById("comment_text"),
-    idUser: document.getElementById("idUserr"),
   };
 };
 
@@ -33,7 +32,7 @@ const getInputComment = () => {
 
 const handleComment = (event) => {
   event.preventDefault();
-  const { author, comment_text, idUser } = getInputComment();
+  const { author, comment_text} = getInputComment();
   const created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   const updated_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   const comentario = new Comment(
@@ -42,7 +41,7 @@ const handleComment = (event) => {
     comment_text.value,
     created_at,
     updated_at,
-    idUser.value
+    null
   );
 
   CommentService.apiSetComment(comentario);
@@ -62,7 +61,6 @@ const loadComment = async () => {
             comment.comment_text,
             comment.created_at,
             comment.updated_at,
-            idUser
           )
       );
       console.log(comments)
@@ -75,29 +73,7 @@ const loadComment = async () => {
 };
 
 const displayComment = (comments) => {
-  const commentsUser = (idBusca) => {
-    const divFeed1 = document.getElementById("comment-user");
-    divFeed1.innerHTML = ``;
-    comments.forEach((comentario) => {
-      if (comentario.getIdUser() === idBusca) {
-        let data1 = new Date(comentario.getCreatedAt());
-        const divDisplay1 = document.createElement("div");
-        divDisplay1.className = "d-flex text-body-secondary pt-3";
-        divDisplay1.innerHTML = `
-        <div class="cardzin" id="scroll">
-        <div class="d-flex">
-            <p class="pb-0 mb-0 small lh-sm" style="word-break: break-all;">
-                <strong>@${comentario.getAuthor().split(" ")[0]}</strong>
-                <i>${comentario.getCommentText()}</i>     
-            </p>
-        </div>
-        <small class="d-block text-end">${data1.toLocaleDateString()} às ${data1.getHours()}:${data1.getMinutes()}</small>
-        </div>     
-            `;
-        divFeed1.appendChild(divDisplay1);
-      }
-    })
-  }
+
 
   const divFeed = document.getElementById("comment-feed");
   divFeed.innerHTML = ``;
@@ -119,13 +95,6 @@ const displayComment = (comments) => {
     divFeed.appendChild(divDisplay);
 
     
-    const authorLink = divDisplay.querySelector('.author');
-    authorLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      console.log(this);
-      const idUsuario = this.getAttribute('dataid');
-      commentsUser(idUsuario);
-    });
   });
 };
 
