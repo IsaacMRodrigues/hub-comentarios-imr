@@ -76,6 +76,15 @@ server.get('/user', (req, res) => {
     })
 })
 
+server.get('/', (req, res) => {
+    res.send(` <h1>API DO SISTEMA HUB-COMENTARIOS</h1>
+    <ul>
+        <li><a href="http://localhost:7000/comment> get de comentarios</a></li>
+        <li><a href="http://localhost:7000/user> get de usuarios</a></li>
+        <li><a href="http://localhost:7000/login> post de login</a></li>
+    </ul>`)
+})
+
 server.listen(PORT, () =>{
     console.log(`O server está rodando em http:\\localhost:${PORT}`)
 } )
