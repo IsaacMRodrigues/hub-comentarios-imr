@@ -39,7 +39,8 @@ const handleLogin = (event) =>{
         user.setLastname(result.lastname);
         handleShowHide();
         document.getElementById("inputAuthor").value = `${result.firstname} ${result.lastname}`;
-        document.getElementById("idUserr").value = `${result.id}`;
+        document.getElementById("idUser").value = `${result.id}`;
+
 
 
         const divNav = document.getElementById("navlogin");
@@ -81,7 +82,7 @@ const handleLogin = (event) =>{
 const logout = () => {
 
             location.reload();
-    
+
 
 }
 

@@ -5,6 +5,7 @@ const getInputComment = () => {
   return {
     author: document.getElementById("inputAuthor"),
     comment_text: document.getElementById("comment_text"),
+    idUser: document.getElementById("idUser"),
   };
 };
 
@@ -32,7 +33,7 @@ const getInputComment = () => {
 
 const handleComment = (event) => {
   event.preventDefault();
-  const { author, comment_text} = getInputComment();
+  const { author, comment_text, idUser } = getInputComment();
   const created_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   const updated_at = new Date().toISOString().slice(0, 19).replace("T", " ");
   const comentario = new Comment(
@@ -41,14 +42,14 @@ const handleComment = (event) => {
     comment_text.value,
     created_at,
     updated_at,
-    null
+    idUser.value
   );
 
   CommentService.apiSetComment(comentario);
 
   loadComment();
 };
-
+let comentarios;
 const loadComment = async () => {
   // Dados carregados da API
   CommentService.apiGetComment()
@@ -61,10 +62,11 @@ const loadComment = async () => {
             comment.comment_text,
             comment.created_at,
             comment.updated_at,
+            comment.idUser
           )
       );
-      console.log(comments)
       displayComment(comments);
+      comentarios = comments;
     })
     .catch((error) => {
       console.error(error);
@@ -73,8 +75,6 @@ const loadComment = async () => {
 };
 
 const displayComment = (comments) => {
-
-
   const divFeed = document.getElementById("comment-feed");
   divFeed.innerHTML = ``;
   comments.forEach((item) => {
@@ -85,7 +85,9 @@ const displayComment = (comments) => {
     <div class="cardzin" id="scroll">
     <div class="d-flex">
         <p class="pb-0 mb-0 small lh-sm" style="word-break: break-all;">
-        <a class="author" dataid="${item.getIdUser()}">@${item.author.split(" ")[0]}</a>
+        <a class="author" data-id="${item.idUser}">@${
+      item.author.split(" ")[0]
+    }</a>
             <i>${item.getCommentText()}</i>     
         </p>
     </div>
@@ -93,11 +95,41 @@ const displayComment = (comments) => {
     </div>     
         `;
     divFeed.appendChild(divDisplay);
-
-    
+    document.querySelectorAll(".author").forEach((authorLink) => {
+      const userId = authorLink.getAttribute("data-id");
+      authorLink.addEventListener("click", () => listarComentarios(userId));
+    });
   });
 };
 
+function listarComentarios(idUser) {
+  const commentuser = document.getElementById("feeduser");
+
+  if (commentuser.classList.contains("disabled")) {
+    commentuser.classList.remove("disabled");
+  }
+  const divFeed2 = document.getElementById("comment-user");
+  divFeed2.innerHTML = ``;
+  comentarios.forEach((item) => {
+    if (item.getIdUser() == idUser) {
+      const divDisplay2 = document.createElement("div");
+      let data = new Date(item.getCreatedAt());
+      divDisplay2.className = "d-flex text-body-secondary pt-3";
+      divDisplay2.innerHTML = `
+    <div class="cardzin" id="scroll">
+    <div class="d-flex">
+        <p class="pb-0 mb-0 small lh-sm" style="word-break: break-all;">
+        <a class="author" id="${item.idUser}">@${item.author.split(" ")[0]}</a>
+            <i>${item.getCommentText()}</i>     
+        </p>
+    </div>
+    <small class="d-block text-end">${data.toLocaleDateString()} às ${data.getHours()}:${data.getMinutes()}</small>
+    </div>     
+        `;
+      divFeed2.appendChild(divDisplay2);
+    }
+  });
+}
 
 const CommentComponent = {
   run: () => {

@@ -81,6 +81,7 @@ server.get('/', (req, res) => {
     <ul>
         <li><a href="http://localhost:7000/comment"> get de comentarios</a></li>
         <li><a href="http://localhost:7000/user"> get de usuarios</a></li>
+
     </ul>`)
 })
 

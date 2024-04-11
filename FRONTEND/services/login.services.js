@@ -18,8 +18,6 @@ const LoginService = {
     });
   },
 
-
-
   apiAuthLogin: async (user) => {
     return new Promise((resolve, reject) => {
       fetch(`${URL_API}/login`, {
@@ -29,7 +27,6 @@ const LoginService = {
       },
       body: JSON.stringify(user)
     })
-    
         .then((response) => response.json())
         .then(data => {
           if (data.success) {
